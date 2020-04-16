@@ -6,8 +6,9 @@ class Cannon < Piece
         super(color,"C")
     end
 
-    def deltas [
-
-            ]
+    def deltas 
+        [
+        [1,1]
+        ]
     end
 end

@@ -6,8 +6,9 @@ class Chariots < Piece
         super(color,"R")
     end
 
-    def deltas [
-
+    def deltas 
+            [
+                [1,1]
             ]
     end
 end
