@@ -5,7 +5,7 @@ class Piece
     end
 
     def to_s
-        '#{color} #{name}'
+        @name
     end
 
     #possible move
