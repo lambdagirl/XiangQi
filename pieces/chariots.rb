@@ -1,9 +1,10 @@
 require_relative 'piece'
+require "colorize"
 
 #车
 class Chariots < Piece
     def name
-        "R"
+        "R".colorize(color)
     end
 
     def deltas 

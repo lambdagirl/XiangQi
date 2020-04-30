@@ -5,7 +5,7 @@ class Horse < Piece
     include Stepable
 
     def name
-        "H"
+        "H".colorize(color)
     end
 
     def deltas 
