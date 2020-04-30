@@ -51,9 +51,7 @@ class Board
         end
     end
 
-    def within_bound?(pos)
-        pos[0].between?(0,ROW-1) && pos[1].between?(0,COL-1)
-    end
+ 
     def empty?(pos)
         self[pos] == sentinel
       end

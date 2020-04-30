@@ -4,7 +4,7 @@ module Stepable
       cur_x, cur_y = pos
       pos = [cur_x + dx, cur_y + dy]
 
-      next unless board.within_bound?(pos)
+      next unless self.within_bound?(pos)
 
       if board.empty?(pos)
         moves << pos

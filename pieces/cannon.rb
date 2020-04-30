@@ -33,7 +33,7 @@ class Cannon < Piece
           cur_x, cur_y = cur_x + dx, cur_y + dy
           pos = [cur_x,cur_y]
 
-          break unless board.within_bound?(pos)
+          break unless self.within_bound?(pos)
 
             if board.empty?(pos) && stone == 0
               moves << pos

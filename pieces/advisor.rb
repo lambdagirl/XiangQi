@@ -16,4 +16,8 @@ class Advisor < Piece
             [ 1,-1]
         ]
     end
+
+    def within_bound?(pos)
+        pos[0].between?(0,2) && pos[1].between?(3,5)
+    end
 end
