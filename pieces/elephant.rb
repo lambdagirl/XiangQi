@@ -1,7 +1,8 @@
-require_relative './piece.rb'
-
+require_relative 'piece'
+require_relative 'stepable'
 #象
 class Elephant < Piece
+    include Stepable
 
     def name
         "E"
