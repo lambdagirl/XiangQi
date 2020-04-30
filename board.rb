@@ -24,46 +24,50 @@ class Board
     end
 
     def set_initial_state
-        place_piece(Chariots.new(:red),0,0)
-        place_piece(Chariots.new(:red),0,8)
-        place_piece(Chariots.new(:black),9,8)
-        place_piece(Chariots.new(:black),9,0)
+        Chariots.new(:red, self, [0,0])
+        Chariots.new(:red, self, [0,8])
+        Chariots.new(:black, self, [9,8])
+        Chariots.new(:black, self, [9,0])
 
-        place_piece(Horse.new(:red),0,1)
-        place_piece(Horse.new(:red),0,7)
-        place_piece(Horse.new(:black),9,1)
-        place_piece(Horse.new(:black),9,7)
-
-        place_piece(Elephant.new(:red),0,2)
-        place_piece(Elephant.new(:red),0,6)
-        place_piece(Elephant.new(:black),9,2)
-        place_piece(Elephant.new(:black),9,6)
-
-        place_piece(Advisor.new(:red),0,3)
-        place_piece(Advisor.new(:red),0,5)
-        place_piece(Advisor.new(:black),9,2)
-        place_piece(Advisor.new(:black),9,5)
+        Horse.new(:red, self, [0,1])
+        Horse.new(:red, self, [0,7])
+        Horse.new(:black, self, [9,1])
+        Horse.new(:black, self, [9,7])
 
 
-        place_piece(Cannon.new(:red),2,1)
-        place_piece(Cannon.new(:red),2,7)
-        place_piece(Cannon.new(:black),7,1)
-        place_piece(Cannon.new(:black),7,7)
 
-        place_piece(Soldier.new(:red),3,0)
-        place_piece(Soldier.new(:red),3,2)
-        place_piece(Soldier.new(:red),3,4)
-        place_piece(Soldier.new(:red),3,6)
-        place_piece(Soldier.new(:red),3,8)
-        place_piece(Soldier.new(:black),6,0)
-        place_piece(Soldier.new(:black),6,2)
-        place_piece(Soldier.new(:black),6,4)
-        place_piece(Soldier.new(:black),6,6)
-        place_piece(Soldier.new(:black),6,8)
+        Elephant.new(:red, self, [0,2])
+        Elephant.new(:red, self, [0,6])
+        Elephant.new(:black, self, [9,2])
+        Elephant.new(:black, self, [9,6])
 
 
-        place_piece(General.new(:red),0,4)
-        place_piece(General.new(:black),9,4)
+        Advisor.new(:red, self, [0,3])
+        Advisor.new(:red, self, [0,5])
+        Advisor.new(:black, self, [9,3])
+        Advisor.new(:black, self, [9,5])
+
+
+        Cannon.new(:red, self, [2,1])
+        Cannon.new(:red, self, [2,7])
+        Cannon.new(:black, self, [7,1])
+        Cannon.new(:black, self, [7,7])
+
+        Soldier.new(:red, self, [3,0])
+        Soldier.new(:red, self, [3,2])
+        Soldier.new(:red, self, [3,4])
+        Soldier.new(:red, self, [3,6])
+        Soldier.new(:red, self, [3,8])
+        Soldier.new(:black, self, [6,0])
+        Soldier.new(:black, self, [6,2])
+        Soldier.new(:black, self, [6,4])
+        Soldier.new(:black, self, [6,6])
+        Soldier.new(:black, self, [6,8])
+
+        Soldier.new(:red, self, [0,4])
+        Soldier.new(:black, self, [9,4])
+
+
     end
 
     def print
