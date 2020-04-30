@@ -76,6 +76,8 @@ class Board
         piece = self[start_pos]
         self[end_pos] = piece
         self[start_pos] = sentinel
+        piece.pos = end_pos
+
         nil
     end
 
