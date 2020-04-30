@@ -3,8 +3,8 @@ require_relative './piece.rb'
 #兵
 class Soldier < Piece
 
-    def initialize(color)
-        super(color, "S")
+    def name
+        "S"
     end
 
     def deltas 

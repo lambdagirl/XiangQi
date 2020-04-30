@@ -2,8 +2,8 @@ require_relative './piece.rb'
 
 #将
 class General < Piece
-    def initialize(color)
-        super(color, "G")
+    def name
+        "G"
     end
     
     def deltas

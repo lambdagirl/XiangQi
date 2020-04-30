@@ -3,8 +3,8 @@ require_relative './piece.rb'
 #象
 class Elephant < Piece
 
-    def initialize(color)
-        super(color,"E")
+    def name
+        "E"
     end
     def deltas 
         [

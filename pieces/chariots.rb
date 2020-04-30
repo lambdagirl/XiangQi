@@ -2,8 +2,8 @@ require_relative './piece.rb'
 
 #车
 class Chariots < Piece
-    def initialize(color)
-        super(color,"R")
+    def name
+        "R"
     end
 
     def deltas 

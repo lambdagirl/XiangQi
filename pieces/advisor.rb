@@ -2,8 +2,8 @@ require_relative './piece.rb'
 
 #仕/士
 class Advisor < Piece
-    def initialize(color)
-        super(color,"A")
+    def name
+        "A"
     end
 
     def deltas 

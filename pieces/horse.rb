@@ -2,8 +2,8 @@ require_relative './piece.rb'
 
 #马
 class Horse < Piece
-    def initialize(color)
-        super(color, "H")
+    def name
+        "H"
     end
 
     def deltas 

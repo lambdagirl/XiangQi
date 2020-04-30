@@ -1,11 +1,14 @@
 class Piece
-    def initialize(color, name)
+    def initialize(color)
         @color = color
-        @name  = name
     end
 
     def to_s
-        @name
+        " #{name} "
+    end
+
+    def name
+        raise UnimplementedError.new
     end
 
     #possible move
