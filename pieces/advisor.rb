@@ -18,6 +18,10 @@ class Advisor < Piece
     end
 
     def within_bound?(pos)
-        pos[0].between?(0,2) && pos[1].between?(3,5)
+        if color == :red
+            pos[0].between?(0,2) && pos[1].between?(3,5)
+        else 
+            pos[0].between?(7,9) && pos[1].between?(3,5)
+        end
     end
 end
