@@ -118,7 +118,7 @@ class Board
         Soldier.new(:blue, self, [6,8])
 
         General.new(:red, self, [0,4])
-        General.new(:black, self, [9,4])
+        General.new(:blue, self, [9,4])
     end
 
 end
