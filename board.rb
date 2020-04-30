@@ -1,23 +1,26 @@
-require_relative './horse.rb'
-require_relative './chariots.rb'
-require_relative './elephant.rb'
-require_relative './soldier.rb'
-require_relative './advisor.rb'
-require_relative './general.rb'
-require_relative './cannon.rb'
+require_relative 'all'
+
 
 
 class Board
     ROW = 10
     COL = 9
 
+    attr_reader :sentinel
     def initialize
-        @grid = Array.new(ROW) { Array.new(COL, nil) }
+        @sentinel = NullPiece.instance
+        @grid = Array.new(ROW) { Array.new(COL, @sentinel) }
+
         set_initial_state
     end
 
-    def [](row,col)
+    def [](pos)
+        row, col = pos
         @grid[row][col]
+    end
+    def []=(pos, val)
+        row, col = pos
+        @grid[row][col] = val  
     end
 
     def set_initial_state
@@ -97,6 +100,13 @@ class Board
         return false if row < 0 || row >>ROW
         return false if col < 0 || col >>ROW
         true
+    end
+
+    def move_piece!(start_pos, end_pos)
+        piece = self[start_pos]
+        self[end_pos] = piece
+        self[start_pos] = nil
+        nil
     end
 
     private
