@@ -1,7 +1,10 @@
-require_relative './piece.rb'
+require_relative 'piece'
+require_relative 'stepable'
 
 #将
 class General < Piece
+    include Stepable
+
     def name
         "G"
     end

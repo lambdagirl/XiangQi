@@ -13,12 +13,12 @@ class Piece
     end
 
     def name
-        raise UnimplementedError.new
+        raise NotImplementedError.new
     end
 
     #possible move
     def deltas
-        raise UnimplementedError.new
+        raise NotImplementedError.new
     end
 end 
 

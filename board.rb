@@ -1,7 +1,5 @@
 require_relative 'all'
 
-
-
 class Board
     ROW = 10
     COL = 9
@@ -10,7 +8,6 @@ class Board
     def initialize
         @sentinel = NullPiece.instance
         @grid = Array.new(ROW) { Array.new(COL, @sentinel) }
-
         set_initial_state
     end
 
@@ -21,53 +18,6 @@ class Board
     def []=(pos, val)
         row, col = pos
         @grid[row][col] = val  
-    end
-
-    def set_initial_state
-        Chariots.new(:red, self, [0,0])
-        Chariots.new(:red, self, [0,8])
-        Chariots.new(:black, self, [9,8])
-        Chariots.new(:black, self, [9,0])
-
-        Horse.new(:red, self, [0,1])
-        Horse.new(:red, self, [0,7])
-        Horse.new(:black, self, [9,1])
-        Horse.new(:black, self, [9,7])
-
-
-
-        Elephant.new(:red, self, [0,2])
-        Elephant.new(:red, self, [0,6])
-        Elephant.new(:black, self, [9,2])
-        Elephant.new(:black, self, [9,6])
-
-
-        Advisor.new(:red, self, [0,3])
-        Advisor.new(:red, self, [0,5])
-        Advisor.new(:black, self, [9,3])
-        Advisor.new(:black, self, [9,5])
-
-
-        Cannon.new(:red, self, [2,1])
-        Cannon.new(:red, self, [2,7])
-        Cannon.new(:black, self, [7,1])
-        Cannon.new(:black, self, [7,7])
-
-        Soldier.new(:red, self, [3,0])
-        Soldier.new(:red, self, [3,2])
-        Soldier.new(:red, self, [3,4])
-        Soldier.new(:red, self, [3,6])
-        Soldier.new(:red, self, [3,8])
-        Soldier.new(:black, self, [6,0])
-        Soldier.new(:black, self, [6,2])
-        Soldier.new(:black, self, [6,4])
-        Soldier.new(:black, self, [6,6])
-        Soldier.new(:black, self, [6,8])
-
-        Soldier.new(:red, self, [0,4])
-        Soldier.new(:black, self, [9,4])
-
-
     end
 
     def print
@@ -100,21 +50,74 @@ class Board
         end
     end
 
-    def within_bound?(row,col)
-        return false if row < 0 || row >>ROW
-        return false if col < 0 || col >>ROW
+    def within_bound?(pos)
+        return false if pos[0] < 0 || pos[0] >ROW
+        return false if pos[1] < 0 || pos[1] >ROW
         true
     end
+    def empty?(pos)
+        self[pos] == sentinel
+      end
+
+    def move_piece(turn_color, start_pos, end_pos)
+        raise 'start position is empty' if empty?(start_pos)
+    
+        piece = self[start_pos]
+        if piece.color != turn_color
+          raise 'You must move your own piece'
+        elsif !piece.moves.include?(end_pos)
+          raise 'Piece does not move like that'
+        end
+    
+        move_piece!(start_pos, end_pos)
+      end
 
     def move_piece!(start_pos, end_pos)
         piece = self[start_pos]
         self[end_pos] = piece
-        self[start_pos] = nil
+        self[start_pos] = sentinel
         nil
     end
 
-    private
-        def place_piece(piece,row,col)
-            @grid[row][col] = piece            
-        end
+    def set_initial_state
+        Chariots.new(:red, self, [0,0])
+        Chariots.new(:red, self, [0,8])
+        Chariots.new(:black, self, [9,8])
+        Chariots.new(:black, self, [9,0])
+
+        Horse.new(:red, self, [0,1])
+        Horse.new(:red, self, [0,7])
+        Horse.new(:black, self, [9,1])
+        Horse.new(:black, self, [9,7])
+
+        Elephant.new(:red, self, [0,2])
+        Elephant.new(:red, self, [0,6])
+        Elephant.new(:black, self, [9,2])
+        Elephant.new(:black, self, [9,6])
+
+        Advisor.new(:red, self, [0,3])
+        Advisor.new(:red, self, [0,5])
+        Advisor.new(:black, self, [9,3])
+        Advisor.new(:black, self, [9,5])
+
+        Cannon.new(:red, self, [2,1])
+        Cannon.new(:red, self, [2,7])
+        Cannon.new(:black, self, [7,1])
+        Cannon.new(:black, self, [7,7])
+
+        Soldier.new(:red, self, [3,0])
+        Soldier.new(:red, self, [3,2])
+        Soldier.new(:red, self, [3,4])
+        Soldier.new(:red, self, [3,6])
+        Soldier.new(:red, self, [3,8])
+        Soldier.new(:black, self, [6,0])
+        Soldier.new(:black, self, [6,2])
+        Soldier.new(:black, self, [6,4])
+        Soldier.new(:black, self, [6,6])
+        Soldier.new(:black, self, [6,8])
+
+        General.new(:red, self, [0,4])
+        General.new(:black, self, [9,4])
+    end
+
 end
