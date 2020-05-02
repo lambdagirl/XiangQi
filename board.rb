@@ -30,20 +30,6 @@ class Board
         pos[0].between?(0,ROW-1) && pos[1].between?(0,COL-1)
     end
 
-    def print
-        @grid.each do |row|
-            cells = []
-            row.each do |piece|
-                if piece == nil
-                    cells << "-"
-                else 
-                    cells << piece.to_s
-                end
-            end
-            puts cells.join(' ')
-        end        
-    end
-
     def possible_moves(color)
         moves = {}
         pieces.each do |piece|
@@ -164,7 +150,9 @@ class Board
       
     def find_king(color)
         king_pos = pieces.find { |p| p.color == color && p.is_a?(General) }
-        king_pos || (raise 'king not found?')
+        king_pos || (raise "#{color} lost, game over!")
     end
+
+
 
 end

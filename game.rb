@@ -32,7 +32,8 @@ class Game
     display.render
     puts "#{current_player} is checkmated."
 
-    nil
+
+
   end
 
   private
