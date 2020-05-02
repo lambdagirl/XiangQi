@@ -5,8 +5,9 @@ class Elephant < Piece
     include Stepable
 
     def name
-        "E".colorize(color)
+        color == :red ? "相".colorize(color) : "象".colorize(color)
     end
+    
     def deltas 
         [
             [2,2],

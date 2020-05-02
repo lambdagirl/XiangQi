@@ -5,7 +5,7 @@ class Soldier < Piece
     include Stepable
 
     def name
-        "S".colorize(color)
+        color == :red ? "兵".colorize(color) : "卒".colorize(color)
     end
 
     def deltas 

@@ -5,7 +5,7 @@ class Advisor < Piece
     include Stepable
 
     def name
-        "A".colorize(color)
+        color == :red ? "仕".colorize(color) : "士".colorize(color)
     end
 
     def deltas 

@@ -1,8 +1,10 @@
-require_relative './board.rb'
+require_relative 'board.rb'
+require_relative 'display.rb'
 
 def main
     b = Board.new
     b.print
+    d = Display.new(b)
     # b.move_piece(:red,[0,4],[1,4])
     # # b.move_piece(:red,[3,0],[3,2])
 
@@ -28,6 +30,8 @@ def main
     # b.move_piece(:red,[0,1],[2,2])
 
     b.print
+    d.render
+
     require 'pry'; binding.pry
 end
 

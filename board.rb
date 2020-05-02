@@ -5,7 +5,7 @@ class Board
     ROW = 10
     COL = 9
 
-    attr_reader :sentinel
+    attr_reader :sentinel , :grid
     def initialize
         @sentinel = NullPiece.instance
         @grid = Array.new(ROW) { Array.new(COL, @sentinel) }
@@ -13,12 +13,21 @@ class Board
     end
 
     def [](pos)
+        raise 'invalid pos' unless valid_pos?(pos)
+    
         row, col = pos
         @grid[row][col]
-    end
-    def []=(pos, val)
+      end
+    
+      def []=(pos, piece)
+        raise 'invalid pos' unless valid_pos?(pos)
+    
         row, col = pos
-        @grid[row][col] = val  
+        @grid[row][col] = piece
+      end
+      
+    def valid_pos?(pos)
+        pos[0].between?(0,ROW-1) && pos[1].between?(0,COL-1)
     end
 
     def print

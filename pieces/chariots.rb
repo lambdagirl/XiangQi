@@ -4,7 +4,7 @@ require "colorize"
 #车
 class Chariots < Piece
     def name
-        "R".colorize(color)
+      color == :red ? "俥".colorize(color) : "車".colorize(color)
     end
 
     def deltas 

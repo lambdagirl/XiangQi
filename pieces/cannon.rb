@@ -3,7 +3,7 @@ require_relative './piece.rb'
 #炮
 class Cannon < Piece
     def name
-        "C".colorize(color)
+      color == :red ? "炮".colorize(color) : "砲".colorize(color)
     end
 
     def deltas 

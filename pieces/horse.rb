@@ -5,7 +5,7 @@ class Horse < Piece
 
 
     def name
-        "H".colorize(color)
+        color == :red ? "傌".colorize(color) : "馬".colorize(color)
     end
 
     def deltas 

@@ -6,7 +6,7 @@ class General < Piece
     include Stepable
 
     def name
-        "G".colorize(color)
+        color == :red ? "帥".colorize(color) : "將".colorize(color)
     end
     
     def deltas
