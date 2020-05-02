@@ -11,6 +11,7 @@ class HumanPlayer < Player
 
       if start_pos
         puts "#{color}'s turn. Move to where?"
+        
         end_pos = @display.cursor.get_input
 
         @display.reset! if end_pos

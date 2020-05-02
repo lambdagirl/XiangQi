@@ -90,47 +90,47 @@ class Board
     def set_initial_state
         Chariots.new(:red, self, [0,0])
         Chariots.new(:red, self, [0,8])
-        Chariots.new(:blue, self, [9,8])
-        Chariots.new(:blue, self, [9,0])
+        Chariots.new(:black, self, [9,8])
+        Chariots.new(:black, self, [9,0])
 
         Horse.new(:red, self, [0,1])
         Horse.new(:red, self, [0,7])
-        Horse.new(:blue, self, [9,1])
-        Horse.new(:blue, self, [9,7])
+        Horse.new(:black, self, [9,1])
+        Horse.new(:black, self, [9,7])
 
         Elephant.new(:red, self, [0,2])
         Elephant.new(:red, self, [0,6])
-        Elephant.new(:blue, self, [9,2])
-        Elephant.new(:blue, self, [9,6])
+        Elephant.new(:black, self, [9,2])
+        Elephant.new(:black, self, [9,6])
 
         Advisor.new(:red, self, [0,3])
         Advisor.new(:red, self, [0,5])
-        Advisor.new(:blue, self, [9,3])
-        Advisor.new(:blue, self, [9,5])
+        Advisor.new(:black, self, [9,3])
+        Advisor.new(:black, self, [9,5])
 
         Cannon.new(:red, self, [2,1])
         Cannon.new(:red, self, [2,7])
-        Cannon.new(:blue, self, [7,1])
-        Cannon.new(:blue, self, [7,7])
+        Cannon.new(:black, self, [7,1])
+        Cannon.new(:black, self, [7,7])
 
         Soldier.new(:red, self, [3,0])
         Soldier.new(:red, self, [3,2])
         Soldier.new(:red, self, [3,4])
         Soldier.new(:red, self, [3,6])
         Soldier.new(:red, self, [3,8])
-        Soldier.new(:blue, self, [6,0])
-        Soldier.new(:blue, self, [6,2])
-        Soldier.new(:blue, self, [6,4])
-        Soldier.new(:blue, self, [6,6])
-        Soldier.new(:blue, self, [6,8])
+        Soldier.new(:black, self, [6,0])
+        Soldier.new(:black, self, [6,2])
+        Soldier.new(:black, self, [6,4])
+        Soldier.new(:black, self, [6,6])
+        Soldier.new(:black, self, [6,8])
 
         General.new(:red, self, [0,4])
-        General.new(:blue, self, [9,4])
+        General.new(:black, self, [9,4])
     end
 
 
     def dup
-        new_board = Board.new(false)
+        new_board = Board.new
 
         pieces.each do |piece|
             piece.class.new(piece.color, new_board, piece.pos)
