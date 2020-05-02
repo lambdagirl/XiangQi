@@ -38,6 +38,7 @@ class Display
   end
 
   def reset!
+    
     @notifications.delete(:error)
   end
 
@@ -48,6 +49,7 @@ class Display
   def set_check!
     @notifications[:check] = "Check!"
   end
+  
 
   def render
     system("clear")

@@ -44,22 +44,15 @@ class Board
         end        
     end
 
-    def possible_move_for(pos_arr)
-        row,col = pos_arr
-        piece = @grid[row][col]
-        if piece == nil 
-            raise Error
-        end
-        next_possible  = []
-        piece.deltas.each do |d|
-            r = row + d[0]
-            c = col + d[1]
-            if within_bound?(r, c)
-                next_possible << [r,c]
+    def possible_moves(color)
+        moves = {}
+        pieces.each do |piece|
+            if piece.color == color
+                moves[piece.pos] = piece.valid_moves
             end
         end
+        moves
     end
-
  
     def empty?(pos)
         self[pos] == sentinel
@@ -86,6 +79,8 @@ class Board
 
         nil
     end
+
+
 
     def set_initial_state
         Chariots.new(:red, self, [0,0])
@@ -153,7 +148,7 @@ class Board
         pieces.select { |p| p.color == color }.all? do |piece|
           piece.valid_moves.empty?
         end
-      end
+    end
     
     def pieces
         pieces = []
@@ -170,6 +165,6 @@ class Board
     def find_king(color)
         king_pos = pieces.find { |p| p.color == color && p.is_a?(General) }
         king_pos || (raise 'king not found?')
-      end
+    end
 
 end

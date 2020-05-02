@@ -1,5 +1,6 @@
 require_relative 'board'
 require_relative 'human_player'
+require_relative 'computer_player'
 
 class Game
   attr_reader :board, :display, :current_player, :players
@@ -9,7 +10,7 @@ class Game
     @display = Display.new(@board)
     @players = {
       red: HumanPlayer.new(:red, @display),
-      black: HumanPlayer.new(:black, @display)
+      black: ComputerPlayer.new(:black, @display)
     }
     @current_player = :red
   end
