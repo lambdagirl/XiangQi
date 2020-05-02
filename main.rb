@@ -1,5 +1,6 @@
 require_relative 'board.rb'
 require_relative 'display.rb'
+require_relative "cursorable"
 
 def main
     b = Board.new
