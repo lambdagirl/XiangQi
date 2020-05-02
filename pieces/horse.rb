@@ -45,7 +45,6 @@ class Horse < Piece
                 elsif dx == -1 and dy == 0
                     deltas.each { |d| blocked << d if  d[0]< -1 }
                 end
-                p pos, blocked
             end
         end
 

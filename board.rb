@@ -128,4 +128,48 @@ class Board
         General.new(:blue, self, [9,4])
     end
 
+
+    def dup
+        new_board = Board.new(false)
+
+        pieces.each do |piece|
+            piece.class.new(piece.color, new_board, piece.pos)
+        end
+    
+        new_board
+    end
+
+    def in_check?(color)
+        king_pos = find_king(color).pos
+        pieces.any? do |p|
+            p.color != color && p.moves.include?(king_pos)
+          end
+    end
+    
+
+    def checkmate?(color)
+        return false unless in_check?(color)
+    
+        pieces.select { |p| p.color == color }.all? do |piece|
+          piece.valid_moves.empty?
+        end
+      end
+    
+    def pieces
+        pieces = []
+        @grid.each do |row|
+            row.each do |piece|
+                if piece != sentinel
+                    pieces << piece
+                end
+            end
+        end    
+        pieces
+    end      
+      
+    def find_king(color)
+        king_pos = pieces.find { |p| p.color == color && p.is_a?(General) }
+        king_pos || (raise 'king not found?')
+      end
+
 end

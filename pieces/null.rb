@@ -18,6 +18,10 @@ class NullPiece < Piece
     def deltas
       []
     end
+
+    def move
+      []
+    end
   
   end
   
